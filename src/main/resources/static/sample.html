@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample</title>
+</head>
+<body>
+    <h1>Sample Client</h1>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        //Ajax 호출 부분.....
+        async function callTest(){
+            const response = await axios.get("http://localhost:8090/api/sample/doA"); //비동기.
+            return response.data
+        }
+
+        callTest()
+            .then(data => console.log(data))
+            .catch(e => console.log(e))
+    </script>
+
+</body>
+</html>

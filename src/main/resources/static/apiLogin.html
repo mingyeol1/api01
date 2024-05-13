@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button class="btn1">generateToken</button>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    document.querySelector(".btn1").addEventListener("click", () => {
+        const data = {mid:"apiuser10", mpw:"1111"}
+
+        axios.post("http://localhost:8090/generateToken", data).then(res => {
+            const accessToken = res.data.accessToken
+            const refreshToken = res.data.refreshToken
+
+            // localStorage? 웹 브라우저에 저장소 공간
+            localStorage.setItem("accessToken", accessToken) //localStorage.setItem를 이용해 토큰 저장.
+            localStorage.setItem("refreshToken", refreshToken)
+
+            console.log(accessToken)
+            console.log(refreshToken)
+        })
+    }, false)
+</script>
+
+</body>
+</html>

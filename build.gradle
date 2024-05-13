@@ -1,0 +1,59 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.5'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'org.zerock'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+
+    //lombok
+    compileOnly 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    //modelmapper
+    implementation 'org.modelmapper:modelmapper:3.2.0'
+    // Swagger UI(spring boot 3에서 사용)
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'
+
+
+    //JSON문자열 처리를 위한  GSON
+    implementation 'com.google.code.gson:gson:2.10.1'
+    //jjwt
+    implementation 'io.jsonwebtoken:jjwt-api:0.12.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.5', 'io.jsonwebtoken:jjwt-jackson:0.12.5'
+
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
